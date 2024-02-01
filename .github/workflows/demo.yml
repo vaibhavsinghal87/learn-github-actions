@@ -13,6 +13,7 @@ jobs:
               working-directory: ./artifacts-outputs
               run: ls
             - name: Install dependencies
+              working-directory: ./artifacts-outputs
               run: npm ci
             - name: Lint Code
               run: npm run lint
