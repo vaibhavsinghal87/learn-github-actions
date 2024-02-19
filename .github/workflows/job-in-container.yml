@@ -13,4 +13,4 @@ jobs:
       - name: Log image node version
         run: |
           node -v
-          cat /etc-osrelease
+          cat /etc/os-release
