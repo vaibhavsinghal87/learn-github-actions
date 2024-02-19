@@ -11,6 +11,6 @@ jobs:
       image: node:16
     steps:
       - name: Log image node version
-      - run: |
+        run: |
           node -v
           cat /etc-osrelease
