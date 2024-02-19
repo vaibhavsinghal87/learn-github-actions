@@ -5,14 +5,12 @@ on:
     branches:
       - job-in-container
 jobs:
-  check-bats-version:
+  job-in-container:
     runs-on: ubuntu-latest
     container:
       image: node:16
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+      - name: Log image node version
+      - run: |
+          node -v
+          cat /etc-osrelease
