@@ -8,7 +8,7 @@ jobs:
   job-in-container:
     runs-on: ubuntu-latest
     container:
-      image: node:16
+      image: node:18
     steps:
       - name: Log image node version
         run: |
