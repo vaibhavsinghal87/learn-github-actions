@@ -8,3 +8,10 @@ jobs:
         run:  echo "Hello World!"
       - name: Print Goodbye
         run:  echo "Done - bye!"
+      - name: Print OS
+        run:  echo ${{runner.os}}
+  second-job:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Print OS
+        run:  echo ${{runner.os}}
