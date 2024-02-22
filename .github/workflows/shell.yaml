@@ -1,4 +1,4 @@
-name: Host info
+name: Host/Shell info
 on: workflow_dispatch
 jobs:
   display-info: 
@@ -8,4 +8,7 @@ jobs:
         run:  |
             pwd
             ls -a
+            echo $GITHUB_SHA
+            echo $GITHUB_REPOSITORY
+            echo $GITHUB_WORKSPACE
       
