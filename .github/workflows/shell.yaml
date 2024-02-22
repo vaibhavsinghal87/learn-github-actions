@@ -1,0 +1,11 @@
+name: Host info
+on: workflow_dispatch
+jobs:
+  display-info: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Display files
+        run:  |
+            pwd
+            ls -a
+      
