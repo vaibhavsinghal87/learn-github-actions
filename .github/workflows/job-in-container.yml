@@ -22,7 +22,7 @@ jobs:
       - name: Create a file
         run: echo "Dummy text" > text.txt
       - name: Use a separate container for this step to print content of file created in above step
-        uses: docker://node20
+        uses: docker://node:20
         with:
           entrypoint: cat
           args: text.txt 
