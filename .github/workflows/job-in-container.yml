@@ -18,4 +18,11 @@ jobs:
           node -v
           cat /etc/os-release
       - name: Log env
-        run: echo $API_URL    
+        run: echo $API_URL  
+      - name: Create a file
+        run: echo "Dummy text" > text.txt
+      - name: Use a separate container for this step to print content of file created in above step
+        uses: docker://node20
+        with:
+          entrypoint: cat
+          args: text.txt 
