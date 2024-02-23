@@ -1,5 +1,4 @@
-name: job-in-container
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: Docker Job
 on: 
   push:
     branches:
@@ -9,8 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: node:18
+      env: 
+        API_URL: some-url.com
+      ports: 
+        - 80  
     steps:
       - name: Log image node version
         run: |
           node -v
           cat /etc/os-release
+      - name: Log env
+        run: echo $API_URL    
