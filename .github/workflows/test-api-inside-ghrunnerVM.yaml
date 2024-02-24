@@ -1,8 +1,6 @@
 name: Checkout and run nodejs app inside runner(VM)
 on: 
-  workflow_dispatch:
-      branches:
-          - job-in-container
+  workflow_dispatch
 jobs:
   build:
       runs-on: ubuntu-latest
