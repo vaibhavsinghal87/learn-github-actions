@@ -1,4 +1,4 @@
-name: Docker Job
+name: Job inside Docker agent
 on: 
   push:
     branches:
