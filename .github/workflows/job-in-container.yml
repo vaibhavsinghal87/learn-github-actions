@@ -1,8 +1,5 @@
 name: Job inside Docker agent
-on: 
-  push:
-    branches:
-      - job-in-container
+on: workflow_dispatch
 jobs:
   job-in-container:
     runs-on: ubuntu-latest
