@@ -1,1 +1,1 @@
-console.log(process.env.DB_NAME);
+console.log("Database name -", process.env.DB_NAME);
