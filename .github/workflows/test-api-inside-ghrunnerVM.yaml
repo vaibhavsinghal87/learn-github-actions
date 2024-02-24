@@ -2,24 +2,28 @@ name: Checkout and run nodejs app inside runner(VM)
 on: push
 jobs:
   build:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Get Code
-          uses:  actions/checkout@v4
-        - name: Folder content
-          working-directory: ./nodejs-docker
-          run: ls
-        - name: Cache dependencies
-          uses: actions/cache@v4
-          with: 
-            path: ~/.npm
-            key: deps-node-modules-${{ hashFiles('./nodejs-docker/package-lock.json') }}
-        - name: Install dependencies
-          working-directory: ./nodejs-docker
-          run: npm ci
-        - name: Run server
-          working-directory: ./nodejs-docker
-          run: |
-            npm start
-        - name: Get users
-          run: curl http://localhost:3000/users
+    env: 
+      MONGO_HOSTNAME: ${{ secrets.MONGO_HOSTNAME }}
+      MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
+      MONGO_PWD: ${{ secrets.MONGO_PWD }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses:  actions/checkout@v4
+      - name: Folder content
+        working-directory: ./nodejs-docker
+        run: ls
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with: 
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('./nodejs-docker/package-lock.json') }}
+      - name: Install dependencies
+        working-directory: ./nodejs-docker
+        run: npm ci
+      - name: Run server
+        working-directory: ./nodejs-docker
+        run: |
+          npm start
+      - name: Get users
+        run: curl http://localhost:3000/users
