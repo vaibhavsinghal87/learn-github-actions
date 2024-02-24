@@ -17,9 +17,6 @@ jobs:
             - name: Install dependencies
               working-directory: ./nodejs-docker
               run: npm ci
-            - name: Install dependencies
-              working-directory: ./nodejs-docker
-              run: npm ci
             - name: Run server
               working-directory: ./nodejs-docker
               run: |
