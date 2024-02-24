@@ -4,7 +4,7 @@ let Schema = mongoose.Schema;
 let usersSchema = new Schema(
     {
         _id: {
-            type: Object,
+            type: Schema.ObjectId,
         },
         name: {
             type: String,

@@ -3,11 +3,10 @@ const mongoose = require("mongoose");
 const host = process.env.MONGO_HOSTNAME;
 const user = process.env.MONGO_USERNAME;
 const pwd = process.env.MONGO_PWD;
-
 // db connection
 const connect = async () => { 
     try {
-        mongoose.connect(`mongodb+srv://${user}:${pwd}@${host}/node-app`).then(() => {
+        mongoose.connect(`mongodb+srv://${user}:${pwd}@${host}/shop`).then(() => {
         console.log('Mongo connected');
         });
     }
