@@ -1,3 +1,4 @@
+# run node-mongo app inside runner and let job interact with app
 name: Checkout and run nodejs app inside runner(VM)
 on: push
 jobs:
