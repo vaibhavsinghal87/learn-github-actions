@@ -1,6 +1,6 @@
-# run node-mongo app inside runner and let job interact with app
-# job running inside VM
-name: Checkout and run nodejs app inside runner(VM)
+# run node-mongo app inside container and let job interact with app
+# job running inside container
+name: Checkout and run nodejs app inside container
 on: push
 jobs:
   build:
@@ -9,6 +9,12 @@ jobs:
       MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
       MONGO_PWD: ${{ secrets.MONGO_PWD }}
     runs-on: ubuntu-latest
+    container:
+      image: node:18
+      env: 
+        API_URL: some-url.com
+      ports: 
+        - 3000 
     steps:
       - name: Get Code
         uses:  actions/checkout@v4
