@@ -1,0 +1,33 @@
+# publish to dockerhub action
+name: Publish to Dockerhub
+on: 
+  release: 
+    types: [published]
+jobs:
+  push-to-dockerhub:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Get Code
+      uses:  actions/checkout@v4
+    - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Extract metadata
+      id: metadata
+      uses: docker/metadata-actions@v5
+      with: 
+        images: vaibhavsinghal87/learn-github-actions
+        tags: |
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+    - name: Build and Publish
+      uses: docker/build-push-action@v5
+      with: 
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ${{ steps.metadata.outputs.tags }}
+        labels: ${{ steps.metadata.outputs.labels }}
+      
