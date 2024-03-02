@@ -1,5 +1,8 @@
 # publish to dockerhub action
 name: Publish to Dockerhub
+defaults: 
+  run: 
+    working-directory: ./nodejs-docker
 on: 
   release: 
     types: [published]
