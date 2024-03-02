@@ -16,7 +16,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Extract metadata
       id: metadata
-      uses: docker/metadata-actions@v5
+      uses: docker/metadata-action@v5
       with: 
         images: vaibhavsinghal87/learn-github-actions
         tags: |
